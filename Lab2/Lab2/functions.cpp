@@ -4,16 +4,13 @@
 
 #include "stdafx.h"
 
-const int n   = 10;
-const int num = 1;
-
-void printVector(int *A) {
+void printVector(int *A, int n) {
     for (int i = 0; i < n; i++)
         printf("%d ", A[i]);
     printf("\n");
 }
 
-void printMatrix(int *A) {
+void printMatrix(int *A, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
             printf("%d ", A[i*n + j]);
@@ -22,12 +19,12 @@ void printMatrix(int *A) {
     printf("\n");
 }
 
-void fillVector(int num, int *A) {
+void fillVector(int num, int *A, int n) {
     for (int i = 0; i < n; i++)
         A[i] = num;
 }
 
-void fillMatrix(int num, int *A) {
+void fillMatrix(int num, int *A, int n) {
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             A[i*n + j] = num;
@@ -39,7 +36,7 @@ void fillMatrix(int num, int *A) {
  * @param B - matrix
  * @param C=A*B - matrix
  */
-void matrixMultiplication(int *A, int *B, int *C, int from, int to) {
+void matrixMultiplication(int *A, int *B, int *C, int from, int to, int n) {
     int buf;
     for (int i = 0; i < n; i++ ) {
         for (int j = from; j < to; j++) {
@@ -58,7 +55,7 @@ void matrixMultiplication(int *A, int *B, int *C, int from, int to) {
  * @param B - matrix
  * @param C=A*B - vector
  */
-void vectorMatrixMultiplication(int *A, int *B, int *C, int from, int to) {
+void vectorMatrixMultiplication(int *A, int *B, int *C, int from, int to, int n) {
     int buf;
     for (int i = from; i < to; i++ ) {
         buf = 0;
@@ -67,31 +64,6 @@ void vectorMatrixMultiplication(int *A, int *B, int *C, int from, int to) {
         }
         C[i] = buf;
     }
-}
-
-/**
- * Calculate scalar of A with B
- * @param A - vector
- * @param B - vector
- * @param scalar=A*B - number
- */
-int scalar(int *A, int *B, int from, int to) {
-    int scalar = 0;
-    for (int i = from; i < to; i++) {
-        scalar += A[i] * B[i];
-    }
-    return scalar;
-}
-
-
-/**
- * Multiplication vector A with number num
- * @param num
- * @param A - source and result
- */
-void numberVectorMultiplication(int num, int *A, int from, int to) {
-    for (int i = from; i < to; i++)
-        A[i] *= num;
 }
 
 /**
@@ -148,4 +120,17 @@ void merge(int *A, int leftIndex, int rightIndex, int size) {
 		A[index++] = buf[i];
 
 	free(buf);
+}
+
+void F(int *A, int e, int *Z, int d, int *S, int *MO, int *MH, int from, int to, int n) {
+	int *MBuf = (int *)malloc(n * n * 4);
+
+	matrixMultiplication(MO, MH, MBuf, from, to, n);
+	vectorMatrixMultiplication(S, MBuf, A, from, to, n);
+
+	for (int i = from; i < to; i++) {
+		A[i] = A[i] * d + e * Z[i];
+	}
+
+	free(MBuf);
 }
