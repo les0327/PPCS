@@ -89,15 +89,16 @@ void vectorSort(int *A, int from, int to) {
 	}
 }
 
-void merge(int *A, int leftIndex, int rightIndex, int size) {
+void merge(int *A, int leftIndex, int rightIndex, int leftSize, int rightSize, int n) {
 	int index = leftIndex;
-	int leftSize = leftIndex + size;
-	int rightSize = rightIndex + size;
 
-	int * buf = (int *)malloc(size * 2 * 4);
+	leftSize += leftIndex;
+	rightSize += rightIndex;
+
+	auto *buf = (int *)malloc((size_t)((n) * 4));
 
 	int i;
-	for (i = 0 ; leftIndex < leftSize && rightIndex < rightSize; i++) {
+	for (i = 0; leftIndex < leftSize && rightIndex < rightSize; i++) {
 		if (A[leftIndex] < A[rightIndex]) {
 			buf[i] = A[leftIndex];
 			leftIndex++;
@@ -109,15 +110,21 @@ void merge(int *A, int leftIndex, int rightIndex, int size) {
 	}
 
 	while (leftIndex < leftSize) {
-		buf[i++] = A[leftIndex++];
+		buf[i] = A[leftIndex];
+		i++;
+		leftIndex++;
 	}
 
 	while (rightIndex < rightSize) {
-		buf[i++] = A[rightIndex++];
+		buf[i] = A[rightIndex];
+		i++;
+		rightIndex++;
 	}
 
-	for (i = 0; i < size * 2; i++)
-		A[index++] = buf[i];
+	for (i = 0; i < n; i++) {
+		A[index] = buf[i];
+		index++;
+	}
 
 	free(buf);
 }

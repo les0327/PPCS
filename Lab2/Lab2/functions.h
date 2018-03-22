@@ -11,7 +11,7 @@ void fillVector(int num, int *A, int n);
 void fillMatrix(int num, int *A, int n);
 
 void vectorSort(int *A, int from, int to);
-void merge(int *A, int leftIndex, int rightIndex, int size);
+void merge(int *A, int leftIndex, int rightIndex, int leftSize, int rightSize, int n);
 
 void F(int *A, int e, int *Z, int d, int *S, int *MO, int *MH, int from, int to, int n);
 
