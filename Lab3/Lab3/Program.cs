@@ -7,33 +7,27 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world");
-            int size = 4;
-            Threads threads = new Threads(size);
+            Console.WriteLine("Main start");
+          
+            int size = Convert.ToInt32(Console.ReadLine());
+            Functions threadFunctions = new Functions(size);
+            Thread[] threads = new Thread[6];
 
-            Thread t1 = new Thread(threads.Task1);
-            Thread t2 = new Thread(threads.Task2);
-            Thread t3 = new Thread(threads.Task3);
-            Thread t4= new Thread(threads.Task4);
-            Thread t5= new Thread(threads.Task5);
-            Thread t6= new Thread(threads.Task6);
-
-            t1.Name = "Task1";
-            t2.Name = "Task2";
-            t3.Name = "Task3";
-
-            t1.Priority = ThreadPriority.Highest;
-            t2.Priority = ThreadPriority.Normal;
-            t3.Priority = ThreadPriority.Lowest;
+            threads[0] = new Thread(() => threadFunctions.Task1(0));
+            threads[1] = new Thread(() => threadFunctions.Task2(1));
+            threads[2] = new Thread(() => threadFunctions.Task3(2));
+            threads[3] = new Thread(() => threadFunctions.Task4(3));
+            threads[4] = new Thread(() => threadFunctions.Taski(4));
+            threads[5] = new Thread(() => threadFunctions.Taski(5));
 
             Console.WriteLine("Main start");
-            t1.Start();
-            t2.Start();
-            t3.Start();
 
-            t1.Join();
-            t2.Join();
-            t3.Join();
+            for (int i = 0; i < 6; i++)
+                threads[i].Start();
+
+            for (int i = 0; i < 6; i++)
+                threads[i].Join();
+            
             Console.WriteLine("Main finish");
             Console.ReadLine();
         }
