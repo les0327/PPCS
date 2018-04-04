@@ -12,7 +12,8 @@ namespace Lab3
         int e, d;
 
         private ManualResetEvent[] manualEvencts = new ManualResetEvent[4]; // manual events for input
-        private Object cs = new Object();  // cs
+        private Object cs = new Object();  // cs for coping data
+        private Mutex mutex = new Mutex(); // mutex for coping data
         private AutoResetEvent ev2_1 = new AutoResetEvent(false);
         private AutoResetEvent ev3_4 = new AutoResetEvent(false);
         private AutoResetEvent ev6_5 = new AutoResetEvent(false);
@@ -35,9 +36,11 @@ namespace Lab3
             {
                 e1 = e;
                 d1 = d;
-                S1 = S;
-                MO1 = MO;
             }
+            mutex.WaitOne();
+            S1 = S;
+            MO1 = MO;
+            mutex.ReleaseMutex();
 
             F(A, e1, Z, d1, S1, MO1, MH, id * _size / 6, (id + 1) * _size / 6);
             vectorSort(A, id * _size / 6, (id + 1) * _size / 6);
@@ -71,9 +74,11 @@ namespace Lab3
             {
                 e2 = e;
                 d2 = d;
-                S2 = S;
-                MO2 = MO;
             }
+            mutex.WaitOne();
+            S2 = S;
+            MO2 = MO;
+            mutex.ReleaseMutex();
 
             F(A, e2, Z, d2, S2, MO2, MH, id * _size / 6, (id + 1) * _size / 6);
             vectorSort(A, id * _size / 6, (id + 1) * _size / 6);
@@ -100,9 +105,11 @@ namespace Lab3
             {
                 e3 = e;
                 d3 = d;
-                S3 = S;
-                MO3 = MO;
             }
+            mutex.WaitOne();
+            S3 = S;
+            MO3 = MO;
+            mutex.ReleaseMutex();
 
             F(A, e3, Z, d3, S3, MO3, MH, id * _size / 6, (id + 1) * _size / 6);
             vectorSort(A, id * _size / 6, (id + 1) * _size / 6);
@@ -129,9 +136,11 @@ namespace Lab3
             {
                 e4 = e;
                 d4 = d;
-                S4 = S;
-                MO4 = MO;
             }
+            mutex.WaitOne();
+            S4 = S;
+            MO4 = MO;
+            mutex.ReleaseMutex();
 
             F(A, e4, Z, d4, S4, MO4, MH, id * _size / 6, (id + 1) * _size / 6);
             vectorSort(A, id * _size / 6, (id + 1) * _size / 6);
@@ -178,9 +187,11 @@ namespace Lab3
             {
                 ei = e;
                 di = d;
-                Si = S;
-                MOi = MO;
             }
+            mutex.WaitOne();
+            Si = S;
+            MOi = MO;
+            mutex.ReleaseMutex();
 
             F(A, ei, Z, di, Si, MOi, MH, id * _size / 6, (id + 1) * _size / 6);
             vectorSort(A, id * _size / 6, (id + 1) * _size / 6);
