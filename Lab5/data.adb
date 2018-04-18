@@ -3,6 +3,11 @@ use  Ada.Text_IO, Ada.Integer_Text_IO;
 
 package body Data is
 
+  procedure Num_Vector(A: in out Vector; num, index: in Integer) is
+    begin
+      A(index) := num;
+    end;
+
    procedure Vector_Output(v : in  Vector) is
    begin
       Put("(");
@@ -60,9 +65,8 @@ package body Data is
    end Matrix_Multiplication;
 
    function Scalar(A, B: in Vector; from, to: in Integer) return Integer is
-     scalar : Integer;
+     scalar : Integer := 0;
    begin
-     scalar := 0;
      for i in from..to loop
        scalar := scalar + A(i) * B(i);
      end loop;

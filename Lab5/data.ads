@@ -8,6 +8,7 @@ package Data is
 
 
    --Procedure declaration
+   procedure Num_Vector(A: in out Vector; num, index: in Integer);
    procedure Vector_Output(v : in  Vector);
    procedure Fill_Vector_With_Num(v : in out Vector; num : in Integer);
    procedure Fill_Matrix_With_Num(m : in out Matrix; num : in Integer);
