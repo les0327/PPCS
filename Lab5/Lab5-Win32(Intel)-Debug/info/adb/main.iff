@@ -1,5 +1,5 @@
 SOURCE: ..\main.adb
-  SRCTIME: 1524066346    Wed Apr 18 18:45:46 2018
+  SRCTIME: 1524069047    Wed Apr 18 19:30:47 2018
   COMPSW: -eo -e 50 -m n -mr n -gc -ga
 COMPVER: 8.4
 SRCDEP: ada.ada
@@ -39,13 +39,15 @@ SRCDEP: system.rts.win32.ads
 SRCDEP: ..\data.ads
   SRCDEPTIME: 1524066056    Wed Apr 18 18:40:56 2018
 SRCDEP: ..\data.adb
-  SRCDEPTIME: 1524066527    Wed Apr 18 18:48:47 2018
+  SRCDEPTIME: 1524066982    Wed Apr 18 18:56:22 2018
+SRCDEP: system.rts.protected_type_descriptor_pkg.dat
+  SRCDEPTIME: 1184920250    Fri Jul 20 11:30:50 2007
 UNIT: Main
   UKIND: 2    SUBP_BODY
   DEP: Data
     DEPKIND: 8    PKG_BODY CODE_DEPENDENCY
     DEPSRC: ..\data.adb
-    DEPSRCTIME: 1524066527    Wed Apr 18 18:48:47 2018
+    DEPSRCTIME: 1524066982    Wed Apr 18 18:56:22 2018
   DEP: Data
     DEPKIND: 9    PKG_GENERIC
     DEPSRC: ..\data.ads
@@ -68,10 +70,14 @@ UNIT: Main
     DEPSRCTIME: 1184920158    Fri Jul 20 11:29:18 2007
   NEED: system.rts.Tasking_Interface
     NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.Protected_Interface
+    NEEDKIND: 7    PKG_DECL
   NEED: system.rts.Master_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: System.RTS.Protected_Type_Descriptor_Pkg
     NEEDKIND: 7    PKG_DECL
   NEED: system.rts.Sec_Stack_Pkg
     NEEDKIND: 7    PKG_DECL
-  FEATURES: 16#200000a0100001#(-1,-1,-1,-1,-1,1)
+  FEATURES: 16#208020a4100101#(-1,-1,3,-1,-1,1)
   MAINLINKNAME: main
 ENDUNIT
