@@ -3,13 +3,6 @@ use  Ada.Text_IO, Ada.Integer_Text_IO;
 
 package body Data is
 
-   procedure Vector_Input (v : out Vector) is
-   begin
-      for i in 1..Size loop
-         Get(v(i));
-      end loop;
-   end Vector_Input;
-
    procedure Vector_Output(v : in  Vector) is
    begin
       Put("(");
@@ -21,34 +14,13 @@ package body Data is
       New_Line;
    end Vector_Output;
 
-   procedure Matrix_Input (m : out Matrix) is
-   begin
-      for i in 1..Size loop
-         for j in 1..Size loop
-            Get(m(i, j));
-         end loop;
-      end loop;
-   end Matrix_Input;
-
-   procedure Matrix_Output(m : in  Matrix) is
-   begin
-      for i in 1..Size loop
-         for j in 1..Size loop
-            Put(m(i, j));
-            Put(" ");
-         end loop;
-         New_Line;
-      end loop;
-      New_Line;
-   end Matrix_Output;
-   
    procedure Fill_Vector_With_Num(v : in out Vector; num : in Integer) is
    begin
       for i in 1..Size loop
          v(i) := num;
       end loop;
    end Fill_Vector_With_Num;
-   
+
    procedure Fill_Matrix_With_Num(m : in out Matrix; num : in Integer) is
    begin
       for i in 1..Size loop
@@ -57,7 +29,7 @@ package body Data is
          end loop;
       end loop;
    end Fill_Matrix_With_Num;
-   
+
 
    --Multiplication of vector and matrix
    procedure Vector_Matrix_Multiplication(A : in Vector; B: in Matrix; C : in out Vector; from , to: in Integer) is
@@ -86,16 +58,38 @@ package body Data is
          end loop;
       end loop;
    end Matrix_Multiplication;
-   
-   procedure F(A : out Vector; B, C, Z: Vector; d: in Integer; MO, MT, MH: in Matrix; from, to: in Integer) is
+
+   function Scalar(A, B: in Vector; from, to: in Integer) return Integer is
+     scalar : Integer;
+   begin
+     scalar := 0;
+     for i in from..to loop
+       scalar := scalar + A(i) * B(i);
+     end loop;
+     return scalar;
+   end Scalar;
+
+   function Vector_Min(A : in Vector; from, to: in Integer) return Integer is
+     min: Integer;
+   begin
+     min:= 200000000;
+     for i in from..to loop
+       if (A(i) < min) then
+         min:=A(i);
+       end if;
+     end loop;
+     return min;
+   end Vector_Min;
+
+   procedure F(A : out Vector; scalar: in Integer;
+        S: in Vector; min:in Integer; Z: in Vector; MO, MH: in Matrix; from, to: in Integer) is
       Mbuf: Matrix;
       Vbuf: Vector;
    begin
-      Matrix_Multiplication(MT, MH, MBuf, from, to);
-      Vector_Matrix_Multiplication(C, MO, Vbuf, from, to);
-      Vector_Matrix_Multiplication(Z, MBUF, A, from, to);
+      Matrix_Multiplication(MO, MH, MBuf, from, to);
+      Vector_Matrix_Multiplication(Z, MBuf, A, from, to);
       for i in from..to loop
-         A(i) := A(i) + (B(i) + VBuf(i)) * d;
+         A(i) := A(i) * min + S(i) * scalar;
       end loop;
    end F;
 
