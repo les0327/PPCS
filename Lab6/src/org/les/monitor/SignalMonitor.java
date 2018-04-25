@@ -20,16 +20,15 @@ public class SignalMonitor {
     public void setInputSignal() {
         synchronized (o1) {
             this.inputSignal++;
+            if (inputSignal == 3)
+                o1.notifyAll();
         }
     }
 
     public void waitInputSignal() throws InterruptedException {
         synchronized (o1) {
-            if (inputSignal != 3) {
+            if (inputSignal != 3)
                 o1.wait();
-            } else {
-                o1.notifyAll();
-            }
         }
     }
 
@@ -42,11 +41,8 @@ public class SignalMonitor {
 
     public void waitMinScalarSignal() throws InterruptedException {
         synchronized (o2) {
-            if (minScalarSignal != 1) {
+            if (minScalarSignal != 1)
                 o2.wait();
-            } else {
-                o2.notifyAll();
-            }
         }
     }
 
@@ -62,8 +58,6 @@ public class SignalMonitor {
         synchronized (o3) {
             if (calcSignal != 5) {
                 o3.wait();
-            } else {
-                o3.notifyAll();
             }
         }
     }

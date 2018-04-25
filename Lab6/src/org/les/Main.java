@@ -12,7 +12,7 @@ import java.util.concurrent.RecursiveTask;
 
 public class Main {
 
-    public static int n = 2000;
+    public static int n = 2400;
     public static int num = 1;
     public static int p = 6;
     public static int LIMIT =  n / 8 + 1;
@@ -44,7 +44,6 @@ public class Main {
         forkJoinPool.shutdown();
 
         signalMonitor.setMinScalarSignal();
-        signalMonitor.waitInputSignal();
 
         for (Thread thread : threads)
             thread.join();
