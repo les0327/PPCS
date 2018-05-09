@@ -1,0 +1,9 @@
+SOURCE: ..\data.ads
+  SRCTIME: 1525883799    Wed May 09 19:36:39 2018
+  COMPSW: -eo -s -e 50 -m n -mr n
+COMPVER: 8.4
+UNIT: Data
+  UKIND: 9    PKG_GENERIC
+  NEED: Data
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT
