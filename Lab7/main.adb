@@ -65,7 +65,8 @@ procedure Main is
    end Task7;
 
    task Task8 is
-     entry SetA(A: in Vector);
+     entry SetA147(A: in Vector);
+     entry SetA25(A: in Vector);
      entry SetMO(MO : in Matrix);
      entry SetBD(d : in Integer; B : in Vector);
      entry SetMin(min : in Integer);
@@ -73,7 +74,8 @@ procedure Main is
    end Task8;
 
    task Task9 is
-     entry SetA(A: in Vector);
+     entry SetA36(A: in Vector);
+     entry SetA8(A: in Vector);
      entry SetMO(MO : in Matrix);
      entry SetMin(min : in Integer);
      entry SetTSMH(T: in Vector; S: in Vector; MH: in Matrix);
@@ -307,7 +309,7 @@ procedure Main is
           accept SetA(A: in Vector) DO
             Copy(A5, A, H, 2*H);
           end SetA;
-          Task8.setA(A5);
+          Task8.setA25(A5);
 
          Put_Line("Task 5 finish");
        end Task5;
@@ -361,7 +363,7 @@ procedure Main is
           accept SetA(A: in Vector) DO
             Copy(A6, A, 2*H, 3*H);
           end SetA;
-          Task9.setA(A6);
+          Task9.setA36(A6);
 
           Put_Line("Task 6 finish");
         end Task6;
@@ -411,7 +413,7 @@ procedure Main is
               Copy(A7, A, 1, H);
               Copy(A7, A, 3*H, 4*H);
             end SetA;
-            Task8.setA(A7);
+            Task8.setA147(A7);
 
            Put_Line("Task 7 finish");
          end Task7;
@@ -460,16 +462,16 @@ procedure Main is
 
               F(A8, min8, T8, d8, S8, MO8, MH8, from, to);
 
-              accept SetA(A: in Vector) DO
+              accept SetA25(A: in Vector) DO
                 Copy(A8, A, H, 2*H);
                 Copy(A8, A, 4*H, 5*H);
-              end SetA;
-              accept SetA(A: in Vector) DO
+              end SetA25;
+              accept SetA147(A: in Vector) DO
                 Copy(A8, A, 1, H);
                 Copy(A8, A, 3*H, 4*H);
                 Copy(A8, A, 6*H, 7*H);
-              end SetA;
-              Task9.setA(A8);
+              end SetA147;
+              Task9.setA8(A8);
 
             Put_Line("Task 8 finish");
           end Task8;
@@ -516,15 +518,15 @@ procedure Main is
 
              F(A9, min9, T9, d9, S9, MO9, MH9, from, to);
 
-             accept SetA(A: in Vector) DO
+             accept SetA36(A: in Vector) DO
                Copy(A9, A, 2*H, 3*H);
                Copy(A9, A, 5*H, 6*H);
-             end SetA;
-             accept SetA(A: in Vector) DO
-               Copy(A9, A, 1, 2*H);
-               Copy(A9, A, 3*H, 6*H);
-               Copy(A9, A, 6*H, 8*H);
-             end SetA;
+             end SetA36;
+             accept SetA8(A: in Vector) DO
+              Copy(A9, A, 1, H);
+              Copy(A9, A, 3*H, 4*H);
+              Copy(A9, A, 6*H, 8*H);
+            end SetA8;
 
              Put("A=");
              Vector_Output(A9);

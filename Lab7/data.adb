@@ -5,7 +5,7 @@ package body Data is
 
   procedure Num_Vector(A: in out Vector) is
   begin
-      A(1) := -10;
+      A(1) := -1;
   end Num_Vector;
 
    procedure Vector_Output(v : in  Vector) is
