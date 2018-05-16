@@ -1,0 +1,5 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ParallelAndDistributedComputingLab6v2.vcxproj, PPCS_CW2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  functions.cpp
+  main.cpp
+  Generating Code...
+  ParallelAndDistributedComputingLab6v2.vcxproj -> C:\Users\Foresstt\Desktop\PPCS\Lab8\ParallelAndDistributedComputingLab6v2\Debug\Lab8.exe

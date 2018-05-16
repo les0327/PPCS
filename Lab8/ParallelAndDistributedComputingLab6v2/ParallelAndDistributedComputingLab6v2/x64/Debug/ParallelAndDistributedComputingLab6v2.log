@@ -1,0 +1,16 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ParallelAndDistributedComputingLab6v2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  functions.cpp
+  main.cpp
+c:\users\foresstt\desktop\ppcs\lab8\parallelanddistributedcomputinglab6v2\parallelanddistributedcomputinglab6v2\main.cpp(72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\foresstt\desktop\ppcs\lab8\parallelanddistributedcomputinglab6v2\parallelanddistributedcomputinglab6v2\main.cpp(74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+main.obj : error LNK2019: unresolved external symbol MPI_Bcast referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Gather referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Scatter referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Comm_size referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Comm_rank referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Graph_create referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Init referenced in function main
+main.obj : error LNK2019: unresolved external symbol MPI_Finalize referenced in function main
+C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x86\\msmpi.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Foresstt\Desktop\PPCS\Lab8\ParallelAndDistributedComputingLab6v2\x64\Debug\Lab8.exe : fatal error LNK1120: 8 unresolved externals
